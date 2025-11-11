@@ -40,7 +40,7 @@ public class BulletDamage : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
            
-            Destroy(collision.gameObject);
+            PlayerHealthController.instance.DealDamage();
             Destroy(gameObject);
         }
     }
