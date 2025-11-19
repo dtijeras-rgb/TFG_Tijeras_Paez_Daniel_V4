@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - EnemyBullet
   - Wall
+  - BabyBottle
   layers:
   - Default
   - TransparentFX
