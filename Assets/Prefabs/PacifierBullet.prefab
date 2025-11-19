@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e042a051a9c3b514d8b85da760ddda64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletPlayer
-  velocity: 2
+  velocity: 4
   damage: 1
   distanceBullet: 3
   rb: {fileID: 0}
