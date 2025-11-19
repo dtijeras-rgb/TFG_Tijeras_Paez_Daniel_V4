@@ -50,6 +50,20 @@ public class PlayerHealthController : MonoBehaviour
 
     }
 
+    public void HealPlayer(int quantitylife)
+    {
+        if (currentHealth >= maxHealth)
+        {
+            return;
+        }
+        currentHealth += quantitylife;
+
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        UIController.instance.UpdateHealthDisplay(currentHealth);
+    }
     private IEnumerator Invulnerability()
     {
         invulnerable = true;
@@ -83,4 +97,6 @@ public class PlayerHealthController : MonoBehaviour
         invulnerable = false;
 
     }
+
+    
 }
