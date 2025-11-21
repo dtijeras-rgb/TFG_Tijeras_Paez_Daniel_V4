@@ -11,6 +11,7 @@ TagManager:
   - Wall
   - BabyBottle
   - Box
+  - Apple
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - EnemyBullet
   - Wall
   - Box
-  - 
+  - Apple
   - 
   - 
   - 
