@@ -15,7 +15,7 @@ public class JumpBoxDamage : MonoBehaviour
     // Referència al col·lisionador de la caixa
     public GameObject boxCollider;
     // Referència al Collider2D de la caixa
-    public Collider2D collider2D;
+    //public Collider2D col2D;
     // Referència a l'objecte de la caixa
     public GameObject boxObject;
 
@@ -82,13 +82,20 @@ public class JumpBoxDamage : MonoBehaviour
             // Activa l'objecte de la caixa
             boxObject.SetActive(true);
             // Desactiva el col·lisionador de la caixa
-            boxCollider.SetActive(false);
+           boxCollider.SetActive(false);
+           
+               
+
             // Desemparenta l'objecte de la caixa trencada
             brokenBox.transform.SetParent(null);
             // Activa la caixa trencada i desactiva la caixa original
             brokenBox.SetActive(true);
+
+          
             // Desactiva el renderer de la caixa original
             spriteRenderer.enabled = false;
+
+
             // Destrueix la caixa després de 5 segons
             Invoke("DestroyBox", 0.5f);
         }
