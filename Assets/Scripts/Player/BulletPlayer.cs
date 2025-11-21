@@ -45,12 +45,26 @@ public class BulletPlayer : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        JumpBoxDamage box = collision.collider.GetComponentInParent<JumpBoxDamage>();
+        if (box != null)
+        {
+            
+            Destroy(gameObject);
+            return;
+        }
     }
 
     // Maneja la colisión con enemigos
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
+        JumpBoxDamage box = collision.GetComponentInParent<JumpBoxDamage>();
+        if (box != null)
+        {
+            
+            Destroy(gameObject);
+            return;
+        }
 
         // Verifica si el objeto colisionado es un enemigo
         if (collision.CompareTag("Enemy") || collision.transform.root.CompareTag("Enemy"))
