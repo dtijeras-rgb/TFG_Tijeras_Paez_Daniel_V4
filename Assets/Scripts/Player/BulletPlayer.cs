@@ -4,7 +4,7 @@ public class BulletPlayer : MonoBehaviour
 {
 
     [SerializeField] private float velocity;
-    [SerializeField] private float damage = 1f;
+   
     [SerializeField] private float distanceBullet = 2f;
     private float directionX = 1f;
 
