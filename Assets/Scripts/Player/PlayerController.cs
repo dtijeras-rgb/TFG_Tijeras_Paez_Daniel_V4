@@ -1,5 +1,7 @@
 using System;
+using UnityEditor.Build.Reporting;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -40,11 +42,36 @@ public class PlayerController : MonoBehaviour
     private float groundedUntil = 0f;
     [SerializeField] private float floorCheckDistance = 0.08f; 
 
+    
     public float knockbackForceX = 2f;
+    
     public float knockbackForceY = 2f;
+    
     public float knockbackLength = 0.15f;
+    
     private float knockbackCounter;
+    
     private float knockbackDir = -1;
+
+    // Cooldown de dash
+    public float dashCooldown;
+    // Partícules de dash
+    public GameObject dashParticle;
+    // Velocitat de dash
+    public float dashSpeed = 30;
+    // Durada de dash
+    [SerializeField] private float dashDuration = 0.15f;
+    // Estat de dash
+    private bool isDashing = false;
+    // Direcció de dash
+    private float dashDirection = 1f;
+    // Temps de dash
+    private float dashTime;
+
+    private float lastDashDirection = 1f ;
+
+    public TextMeshProUGUI dashText;
+    
 
     void Awake()
     {
@@ -55,6 +82,8 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
+
+       dashCooldown -= Time.deltaTime;
         // Direcció del knockback
         if (knockbackCounter <= 0)
         {
@@ -78,7 +107,8 @@ public class PlayerController : MonoBehaviour
             knockbackCounter -= Time.deltaTime;
             
         }
-        
+
+        UpdateDashUI();
     }
 
     void FixedUpdate()
@@ -89,8 +119,27 @@ public class PlayerController : MonoBehaviour
             rbPlayer.linearVelocity = new Vector2(knockbackDir * knockbackForceX, knockbackForceY);
             return;
         }
-        ControlMoveHorizontal();
+
+        if (isDashing)
+        {
+            dashTime -= Time.fixedDeltaTime;
+
+            rbPlayer.linearVelocity = new Vector2(dashDirection * dashSpeed, 0f);
+
+            if (dashTime <= 0f)
+            {
+                isDashing = false;
+            }
+            return;
+        }
+        if (Input.GetKey("e") && dashCooldown <= 0)
+        {
+            Dash();
+            return;
+        }
+            ControlMoveHorizontal();
         
+
     }
 
     private void ControlJump()
@@ -136,8 +185,16 @@ public class PlayerController : MonoBehaviour
     {
         rbPlayer.linearVelocity = new Vector2(moveHorizontal * moveSpeed, rbPlayer.linearVelocity.y);
 
-        if (moveHorizontal > 0) srPlayer.flipX = false;
-        else if (moveHorizontal < 0) srPlayer.flipX = true;
+        if (moveHorizontal > 0.01f)
+        {
+            srPlayer.flipX = false;
+            lastDashDirection = 1f;
+        }
+        else if (moveHorizontal < -0.01f)
+        {
+            srPlayer.flipX = true;
+            lastDashDirection = -1f;
+        }
     }
 
     private void CheckComponentReferences()
@@ -184,6 +241,45 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void Dash()
+    {
+        GameObject dashObject;
+
+        dashObject = Instantiate(dashParticle, transform.position, transform.rotation);
+        Destroy(dashObject, 1f);
+
+      dashDirection = lastDashDirection;
+
+        if (dashDirection == 0f)
+        {
+            dashDirection = srPlayer.flipX ? -1f : 1f;
+        }
+
+        isDashing = true;
+        dashTime = dashDuration;
+
+
+        dashCooldown = 2f;
+
+       
+    }
+
+    private void UpdateDashUI()
+    {
+        if (dashText == null)
+        {
+            return;
+        }
+
+        if (dashCooldown > 0f)
+        {
+            dashText.text = dashCooldown.ToString("F1");
+        }
+        else
+        {
+            dashText.text = "";
+        }
+    }
 }
 
 

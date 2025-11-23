@@ -14,7 +14,6 @@ public class DamagePlayerVsEnemy : MonoBehaviour
 
     [SerializeField] private int lifes = 2;
 
-    [SerializeField] private int bulletDmg = 1;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
