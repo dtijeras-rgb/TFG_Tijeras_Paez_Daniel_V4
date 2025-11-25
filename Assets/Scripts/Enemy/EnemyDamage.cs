@@ -7,7 +7,7 @@ public class EnemyDamage : MonoBehaviour
         if (collision.transform.CompareTag("Player"))
         {
             PlayerHealthController health = collision.gameObject.GetComponent<PlayerHealthController>();
-            PacifierPlayerDamage playShooting = collision.gameObject.GetComponent<PacifierPlayerDamage>();
+           // PacifierPlayerDamage playShooting = collision.gameObject.GetComponent<PacifierPlayerDamage>();
             PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
 
             if (health != null)
@@ -21,11 +21,11 @@ public class EnemyDamage : MonoBehaviour
                 playerController.Knockback(hitDirection);
             }
 
-            if (playShooting != null)
-            {
-                playShooting.DisableShooting();
-                UIController.instance.PacifierEnable(false);
-            }
+          //  if (playShooting != null)
+         //   {
+                //playShooting.DisableShooting();
+            //    UIController.instance.PacifierEnable(false);
+           // }
         }
     }
 }

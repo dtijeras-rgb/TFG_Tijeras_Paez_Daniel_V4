@@ -12,6 +12,8 @@ public class IAEstatica : MonoBehaviour
 
     public Transform spawnPoint;
 
+    
+
     private void Start()
     {
         //Ponemos el tiempo de ataque en 3
@@ -20,14 +22,20 @@ public class IAEstatica : MonoBehaviour
 
     private void Update()
     {
+
+        
         if (waitedTime <= 0)
         {
+            if (IsOnVisible())
+            {
+                //Haacemos animacion de atake
+                animator.Play("Attack");
+                //Realizamos el atacke de la bala
+                Invoke("AttackBullet", 0.5f);
+            }
             //Ponemos el tiempo de ataque en 3
             waitedTime = timeToAttack;
-            //Haacemos animacion de atake
-            animator.Play("Attack");
-            //Realizamos el atacke de la bala
-            Invoke("AttackBullet",0.5f);
+            
         }
         else
         {
@@ -35,7 +43,17 @@ public class IAEstatica : MonoBehaviour
             waitedTime -= Time.deltaTime;
         }
     }
+    private bool IsOnVisible()
+    {
+        if (Camera.main == null)
+        {
+            return false;
+        }
 
+        Vector3 vector3 = Camera.main.WorldToViewportPoint(transform.position);
+
+        return vector3.z > 0 && vector3.x > 0 && vector3.x < 1 && vector3.y > 0 && vector3.y < 1;
+    }
     public void AttackBullet()
     {
         ////Instanciamos una bala, es decir creamos una bala

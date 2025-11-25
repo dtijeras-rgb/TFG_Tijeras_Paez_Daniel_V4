@@ -39,7 +39,14 @@ public class PlayerHealthController : MonoBehaviour
         currentHealth--;
         UIController.instance.PacifierEnable(false);
         UIController.instance.UpdateHealthDisplay(currentHealth);
-     
+        PacifierPlayerDamage playerShooting = GetComponent<PacifierPlayerDamage>();
+
+        if (playerShooting != null)
+        {
+            playerShooting.DisableShooting();
+            UIController.instance.PacifierEnable(false);
+        }
+
         if (currentHealth <= 0)
         {
             gameObject.SetActive(false);

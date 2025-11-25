@@ -133,6 +133,10 @@ public class JumpBoxDamage : MonoBehaviour
     // Mètode per destruir la caixa
     public void DestroyBox()
     {
+        if (brokenBox != null)
+        {
+            Destroy(brokenBox, 0.5f);
+        }
         // Destrueix l'objecte de la caixa
         Destroy(gameObject);
 
