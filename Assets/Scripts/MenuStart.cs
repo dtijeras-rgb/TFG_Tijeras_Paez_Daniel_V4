@@ -23,10 +23,10 @@ public class MenuStart : MonoBehaviour
 
     public void StartGame()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-       TransitionSceneUI.instance.DissolveExit(SceneManager.GetActiveScene().buildIndex + 1);
-        
-       
+        PlayerPrefs.DeleteKey("checkpointX");
+        PlayerPrefs.DeleteKey("checkpointY");
+        TransitionSceneUI.instance.DissolveExit(SceneManager.GetActiveScene().buildIndex + 1);
+      
     }
 
     public void ExitGame()

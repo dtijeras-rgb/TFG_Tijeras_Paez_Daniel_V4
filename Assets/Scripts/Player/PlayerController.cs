@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
             }
             return;
         }
-        if (Input.GetKey("e") && dashCooldown <= 0)
+        if (Input.GetKey("f") && dashCooldown <= 0)
         {
             Dash();
             return;

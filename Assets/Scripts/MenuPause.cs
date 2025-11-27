@@ -55,6 +55,9 @@ public class MenuPause : MonoBehaviour
     {
         isPaused = false;
         Time.timeScale = 1f;
+
+        PlayerPrefs.DeleteKey("checkpointX");
+        PlayerPrefs.DeleteKey("checkpointY");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -21,6 +21,9 @@ public class GameOver : MonoBehaviour
     public void RestartGame()
     {
         Time.timeScale = 1f;
+
+        //PlayerPrefs.DeleteKey("checkpointX");
+       // PlayerPrefs.DeleteKey("checkpointY");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
