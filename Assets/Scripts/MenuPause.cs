@@ -31,7 +31,7 @@ public class MenuPause : MonoBehaviour
         btnPause.SetActive(false);
         menuPause.SetActive(true);
 
-        EventSystem.current.SetSelectedGameObject(null);
+       EventSystem.current.SetSelectedGameObject(null);
        EventSystem.current.SetSelectedGameObject(menuPause.transform.GetChild(0).gameObject);
     }
 

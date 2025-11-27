@@ -12,6 +12,10 @@ public class PlayerHealthController : MonoBehaviour
     [SerializeField] private string enemyLayerName = "Enemy";
 
     private bool invulnerable;
+
+    public GameOver gameOver;
+
+    
     public void Awake()
     {
         instance = this;
@@ -20,6 +24,8 @@ public class PlayerHealthController : MonoBehaviour
         {
             spriteToFlash = GetComponent<SpriteRenderer>();
         }
+
+       
     }
 
     void Start()
@@ -49,6 +55,12 @@ public class PlayerHealthController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+                
+            if(gameOver != null)
+            {
+                gameOver.ShowGameOver();
+            }
+             
             gameObject.SetActive(false);
             return;
         }
@@ -56,7 +68,7 @@ public class PlayerHealthController : MonoBehaviour
 
 
     }
-
+   
     public void HealPlayer(int quantitylife)
     {
         if (currentHealth >= maxHealth)

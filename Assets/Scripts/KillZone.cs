@@ -6,11 +6,40 @@ public class KillZone : MonoBehaviour
    {
        if (collision.CompareTag("Player"))
        {
-        PlayerRespawn playerRespawn = collision.GetComponent<PlayerRespawn>();
-            if (playerRespawn != null)
+            if (!collision.CompareTag("Player"))
             {
-                collision.transform.position = playerRespawn.GetCheckpoint();
+                return;
             }
+            
+            var move = collision.GetComponentInParent<PlayerController>();
+
+            if (move != null)
+            {
+                move.enabled = false;
+            }
+            var shoot = collision.GetComponentInParent<PacifierBulletCollected>();
+
+            if (shoot != null)
+            {
+                shoot.enabled = false;
+            }
+            Rigidbody2D rb = collision.GetComponentInParent<Rigidbody2D>();
+
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector2.zero;
+                rb.simulated = false;
+            }
+
+            var gameOver = FindAnyObjectByType<GameOver>(FindObjectsInactive.Include);
+
+            if (gameOver != null)
+            {
+                gameOver.ShowGameOver();
+            }
+
+            collision.transform.root.gameObject.SetActive(false);
+
         }
     }
 }
