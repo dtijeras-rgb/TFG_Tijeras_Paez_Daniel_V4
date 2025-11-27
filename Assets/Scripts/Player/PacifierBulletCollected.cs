@@ -4,6 +4,7 @@ public class PacifierBulletCollected : MonoBehaviour
 {
    
     private bool collected = false; // Variable para evitar múltiples colecciones
+    public AudioSource collectSound; // So de col·lecció
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collected)
@@ -33,6 +34,7 @@ public class PacifierBulletCollected : MonoBehaviour
             transform.GetChild(0).gameObject.SetActive(true); // Activa el primer hijo del objeto del juego
             // Destrueix l'objecte del joc després de 0.5 segons
             Destroy(gameObject, 0.5f);
+            collectSound.Play();
         }
     }
 }

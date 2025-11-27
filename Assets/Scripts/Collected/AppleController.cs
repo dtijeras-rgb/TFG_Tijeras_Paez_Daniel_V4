@@ -3,6 +3,7 @@ using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 
+
 public class AppleController : MonoBehaviour
 {
    public static AppleController instance;
@@ -14,6 +15,8 @@ public class AppleController : MonoBehaviour
     public TextMeshProUGUI appleCountText;
 
     public GameObject oneUpMessage;
+
+   
     private void Awake()
     {
         

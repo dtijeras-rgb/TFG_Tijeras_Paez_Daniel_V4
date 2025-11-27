@@ -11,6 +11,8 @@ public class PlayerHealthController : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteToFlash;
     [SerializeField] private string enemyLayerName = "Enemy";
 
+    [SerializeField] private AudioClip hitSound;
+    private AudioSource audioSource;
     private bool invulnerable;
 
     public GameOver gameOver;
@@ -20,12 +22,13 @@ public class PlayerHealthController : MonoBehaviour
     {
         instance = this;
 
+
         if(spriteToFlash == null)
         {
             spriteToFlash = GetComponent<SpriteRenderer>();
         }
 
-       
+       audioSource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -41,11 +44,15 @@ public class PlayerHealthController : MonoBehaviour
         {
             return;
         }
-
+        if (audioSource != null && hitSound != null)
+        {
+            audioSource.PlayOneShot(hitSound);
+        }
         currentHealth--;
         UIController.instance.PacifierEnable(false);
         UIController.instance.UpdateHealthDisplay(currentHealth);
         PacifierPlayerDamage playerShooting = GetComponent<PacifierPlayerDamage>();
+        
 
         if (playerShooting != null)
         {

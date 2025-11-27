@@ -14,6 +14,14 @@ public class DamagePlayerVsEnemy : MonoBehaviour
 
     [SerializeField] private int lifes = 2;
 
+    [SerializeField] private AudioClip hitSound;
+    
+    private AudioSource audioSource;
+    private void Awake()
+    {
+       audioSource = GetComponentInParent<AudioSource>();
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -70,6 +78,12 @@ public class DamagePlayerVsEnemy : MonoBehaviour
     public void LoseLife()
     {
         lifes--;
+
+        if (audioSource != null && hitSound != null)
+        {
+            audioSource.PlayOneShot(hitSound);
+        }
+
         animator.Play("Hit", 0, 0f);
     }
 

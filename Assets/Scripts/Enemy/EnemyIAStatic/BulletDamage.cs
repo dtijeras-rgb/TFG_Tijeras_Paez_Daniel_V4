@@ -6,6 +6,8 @@ public class BulletDamage : MonoBehaviour
     public float lifeTime = 2;
     public bool left;
 
+    [SerializeField] private AudioClip hitSound;
+
     private void Start()
     {
         Destroy(gameObject, lifeTime);
@@ -27,6 +29,10 @@ public class BulletDamage : MonoBehaviour
     {
         if (collision.CompareTag("Bullet") || collision.CompareTag("EnemyBullet"))
         {
+            if (hitSound != null)
+            {
+                AudioSource.PlayClipAtPoint(hitSound, transform.position);
+            }
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }

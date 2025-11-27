@@ -1,4 +1,6 @@
 using UnityEngine;
+
+using UnityEngine.Audio;
 // Classe per gestionar la col·lecció del biberó
 public class BabyBottleCollected : MonoBehaviour
 {
@@ -6,6 +8,8 @@ public class BabyBottleCollected : MonoBehaviour
 
     private bool collected = false; // Variable per evitar múltiples col·leccions
     // Mètode que s'activa quan un altre col·lisionador entra en contacte amb aquest objecte
+
+    public AudioSource collectSound; // So de col·lecció
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Si ja s'ha col·leccionat, no fa res
@@ -39,6 +43,7 @@ public class BabyBottleCollected : MonoBehaviour
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
             // Destrueix l'objecte del joc després de 0.5 segons
             Destroy(gameObject, 0.5f);
+            collectSound.Play();
         }
     }
 }

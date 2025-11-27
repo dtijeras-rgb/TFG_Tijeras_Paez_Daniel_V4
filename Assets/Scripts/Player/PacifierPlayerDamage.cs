@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PacifierPlayerDamage : MonoBehaviour
 {
@@ -13,7 +14,13 @@ public class PacifierPlayerDamage : MonoBehaviour
     public SpriteRenderer player;
   
     public bool canShoot = false;
-   
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip shootSound;
+
+    private void Awake()
+    {
+        audioSource = GetComponentInParent<AudioSource>();
+    }
     void Update()
     {
         // comprueba si podemos disparar
@@ -25,7 +32,12 @@ public class PacifierPlayerDamage : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime)
         {
             Shoot();
-           nextFireTime = Time.time + fireRate;
+
+            if (audioSource != null && shootSound != null)
+            {
+                audioSource.PlayOneShot(shootSound);
+            }
+            nextFireTime = Time.time + fireRate;
         }
     }
 
