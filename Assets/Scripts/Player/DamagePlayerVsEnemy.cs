@@ -36,15 +36,6 @@ public class DamagePlayerVsEnemy : MonoBehaviour
         else
         {
 
-       
-        
-
-       // PacifierPlayerDamage playerShoot = collision.gameObject.GetComponent<PacifierPlayerDamage>();
-       // if (playerShoot != null)
-       // {
-            //playerShoot.DisableShooting();
-              //  UIController.instance.PacifierEnable(false);
-          //  }
         LoseLife();
         CheckLife();
         }
