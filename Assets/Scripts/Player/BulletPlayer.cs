@@ -6,6 +6,10 @@ public class BulletPlayer : MonoBehaviour
     [SerializeField] private float velocity;
    
     [SerializeField] private float distanceBullet = 2f;
+
+    
+
+   
     private float directionX = 1f;
 
     public Rigidbody2D rb;
@@ -17,6 +21,8 @@ public class BulletPlayer : MonoBehaviour
         rb.gravityScale = 0f;
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         rb.freezeRotation = true;
+
+       
     }
 
     public void SetDirection(float directionX)

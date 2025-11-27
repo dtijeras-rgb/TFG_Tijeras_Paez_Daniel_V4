@@ -40,9 +40,13 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] private float groundedBuffer = 0.06f;
     private float groundedUntil = 0f;
-    [SerializeField] private float floorCheckDistance = 0.08f; 
+    [SerializeField] private float floorCheckDistance = 0.08f;
 
+    [SerializeField] private AudioClip jumpSound;
     
+
+    private AudioSource audioSource;    
+
     public float knockbackForceX = 2f;
     
     public float knockbackForceY = 2f;
@@ -75,6 +79,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         CheckComponentReferences();
         colPlayer = GetComponent<Collider2D>();
         instance = this;
@@ -132,7 +137,7 @@ public class PlayerController : MonoBehaviour
             }
             return;
         }
-        if (Input.GetKey("f") && dashCooldown <= 0)
+        if (Input.GetKey("j") && dashCooldown <= 0)
         {
             Dash();
             return;
@@ -167,7 +172,11 @@ public class PlayerController : MonoBehaviour
             rbPlayer.linearVelocity = new Vector2(rbPlayer.linearVelocity.x, forceJump);
             nextAirJumpTime = Time.time + airJumpCooldown;
 
-            
+            if(audioSource != null && jumpSound != null)
+            {
+                audioSource.PlayOneShot(jumpSound);
+            }
+
             ignoreWallUntil = Time.time + wallGraceTime;
             return;
         }
@@ -178,6 +187,11 @@ public class PlayerController : MonoBehaviour
             dobleJump = false;
             rbPlayer.linearVelocity = new Vector2(rbPlayer.linearVelocity.x, forceJump);
             nextAirJumpTime = Time.time + airJumpCooldown;
+
+            if (audioSource != null && jumpSound != null)
+            {
+                audioSource.PlayOneShot(jumpSound);
+            }
         }
     }
 
