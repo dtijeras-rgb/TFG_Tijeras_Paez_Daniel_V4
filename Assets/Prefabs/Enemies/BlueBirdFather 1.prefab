@@ -167,7 +167,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.25
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -595,7 +595,7 @@ MonoBehaviour:
   destroyParticle: {fileID: 6415566982657674352}
   jumForce: 2.5
   lifes: 1
-  hitSound: {fileID: 8300000, guid: eec68ed21b53691408a58a5bbfa05c3f, type: 3}
+  hitSound: {fileID: 8300000, guid: 47639e7521492874ebda222ca5e91e03, type: 3}
 --- !u!1 &7921962141546087892
 GameObject:
   m_ObjectHideFlags: 0

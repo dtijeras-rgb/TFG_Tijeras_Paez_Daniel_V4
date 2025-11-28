@@ -19,6 +19,13 @@ public class JumpBoxDamage : MonoBehaviour
     // Referència a l'objecte de la caixa
     public GameObject boxObject;
 
+    [SerializeField] private AudioClip breakSound;
+
+    private AudioSource audioSource;
+    private void Awake()
+    {
+        audioSource = GetComponentInParent<AudioSource>();
+    }
     private void Start()
     {
         if(boxObject != null) { boxObject.SetActive(false); }
@@ -88,6 +95,10 @@ public class JumpBoxDamage : MonoBehaviour
     // Mètode per comprovar la vida restant
     public void CheckLife()
     {
+        if (audioSource != null && breakSound != null)
+        {
+            audioSource.PlayOneShot(breakSound);
+        }
         // Si la vida és 0 o menys, trenca la caixa
         if (life <= 0)
         {

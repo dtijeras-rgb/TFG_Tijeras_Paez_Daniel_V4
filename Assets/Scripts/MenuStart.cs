@@ -64,6 +64,6 @@ public class MenuStart : MonoBehaviour
 
        EventSystem.current.SetSelectedGameObject(null);
        EventSystem.current.SetSelectedGameObject(button);
-        Debug.Log("Seleccionat: " + EventSystem.current.currentSelectedGameObject?.name);
+        
     }
 }

@@ -6,7 +6,7 @@ public class GameOver : MonoBehaviour
 {
 
     public GameObject gameOverPanel;
-
+    public AudioSource gameOverSound;
     public void ShowGameOver()
     {
         
@@ -15,6 +15,11 @@ public class GameOver : MonoBehaviour
             gameOverPanel.SetActive(true);
         }
 
+        if (gameOverSound != null)
+        {
+            gameOverSound.Play();
+        }
+      
         Time.timeScale = 0f;
     }
 
@@ -22,8 +27,7 @@ public class GameOver : MonoBehaviour
     {
         Time.timeScale = 1f;
 
-        //PlayerPrefs.DeleteKey("checkpointX");
-       // PlayerPrefs.DeleteKey("checkpointY");
+       
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

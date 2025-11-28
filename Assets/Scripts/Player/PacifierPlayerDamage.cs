@@ -35,7 +35,7 @@ public class PacifierPlayerDamage : MonoBehaviour
 
             if (audioSource != null && shootSound != null)
             {
-                audioSource.PlayOneShot(shootSound);
+                audioSource.PlayOneShot(shootSound,3f);
             }
             nextFireTime = Time.time + fireRate;
         }
