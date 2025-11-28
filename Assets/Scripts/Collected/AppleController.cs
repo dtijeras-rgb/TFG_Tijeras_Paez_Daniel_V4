@@ -7,6 +7,8 @@ using UnityEngine;
 public class AppleController : MonoBehaviour
 {
    public static AppleController instance;
+    [SerializeField] private AudioClip collectSound;
+    [SerializeField] private AudioSource audioSource;
 
     public int count = 0;
     public int maxCount = 20;
@@ -21,6 +23,10 @@ public class AppleController : MonoBehaviour
     {
         
         instance = this;
+        if(audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
     }
 
     public void CountApple()
@@ -42,6 +48,10 @@ public class AppleController : MonoBehaviour
     private void OneUP()
     {
        
+        if(audioSource != null && collectSound != null)
+        {
+            audioSource.PlayOneShot(collectSound);
+        }
 
         if (PlayerHealthController.instance != null)
         {

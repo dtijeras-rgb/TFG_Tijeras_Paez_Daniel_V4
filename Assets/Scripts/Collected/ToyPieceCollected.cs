@@ -7,6 +7,7 @@ public class ToyPieceCollected : MonoBehaviour
     public float delayMessage = 10f;
 
     [SerializeField] private AudioSource winLevel;
+    [SerializeField] private AudioSource ambientMusic;
     private AudioSource audioSource;
     private void Start()
     {
@@ -60,7 +61,15 @@ public class ToyPieceCollected : MonoBehaviour
         {
             audioSource.PlayOneShot(winLevel.clip);
         }
+        if (ambientMusic != null)
+        {
+            ambientMusic.Stop();
+        }
 
+        if(audioSource != null && winLevel != null)
+        {
+            audioSource.PlayOneShot(winLevel.clip);
+        }
         StartCoroutine(ChangeScene());
        
     }

@@ -7,7 +7,7 @@ public class MenuPause : MonoBehaviour
 
     [SerializeField] private GameObject btnPause;
     [SerializeField] private GameObject menuPause;
-
+    [SerializeField] private AudioSource ambientMusic;
     private bool isPaused = false;
 
     private void Update()
@@ -31,7 +31,11 @@ public class MenuPause : MonoBehaviour
         btnPause.SetActive(false);
         menuPause.SetActive(true);
 
-       EventSystem.current.SetSelectedGameObject(null);
+        if (ambientMusic != null)
+        {
+            ambientMusic.Pause();
+        }
+        EventSystem.current.SetSelectedGameObject(null);
        EventSystem.current.SetSelectedGameObject(menuPause.transform.GetChild(0).gameObject);
     }
 
@@ -41,21 +45,34 @@ public class MenuPause : MonoBehaviour
         Time.timeScale = 1f;
         btnPause.SetActive(true);
         menuPause.SetActive(false);
+        if (ambientMusic != null)
+        {
+            ambientMusic.UnPause();
+        }
     }
 
     public void ExitGame()
     {
         isPaused = false;
         Time.timeScale = 1f;
+
+        if (ambientMusic != null)
+        {
+            ambientMusic.Stop();
+        }
+
         SceneManager.LoadScene("MenuStart");
-        
+       
     }
 
     public void RestartLevel()
     {
         isPaused = false;
         Time.timeScale = 1f;
-
+        if (ambientMusic != null)
+        {
+            ambientMusic.Stop();
+        }
         PlayerPrefs.DeleteKey("checkpointX");
         PlayerPrefs.DeleteKey("checkpointY");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

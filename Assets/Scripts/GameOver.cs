@@ -1,12 +1,14 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System;
 
 public class GameOver : MonoBehaviour
 {
 
     public GameObject gameOverPanel;
     public AudioSource gameOverSound;
+    [SerializeField] private AudioSource ambientMusic;
     public void ShowGameOver()
     {
         
@@ -15,11 +17,16 @@ public class GameOver : MonoBehaviour
             gameOverPanel.SetActive(true);
         }
 
-        if (gameOverSound != null)
+        if (ambientMusic != null)
+        {
+            ambientMusic.Stop();
+        }
+
+        if(gameOverSound != null)
         {
             gameOverSound.Play();
         }
-      
+
         Time.timeScale = 0f;
     }
 
