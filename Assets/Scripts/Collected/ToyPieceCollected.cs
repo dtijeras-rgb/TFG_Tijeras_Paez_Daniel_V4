@@ -6,6 +6,13 @@ public class ToyPieceCollected : MonoBehaviour
     public GameObject messageFinishLevel;
     public float delayMessage = 10f;
 
+    [SerializeField] private AudioSource winLevel;
+    private AudioSource audioSource;
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
       
@@ -48,6 +55,12 @@ public class ToyPieceCollected : MonoBehaviour
             animator.Play("PlayerIdleAnimator");
 
         }
+
+        if (winLevel != null)
+        {
+            audioSource.PlayOneShot(winLevel.clip);
+        }
+
         StartCoroutine(ChangeScene());
        
     }

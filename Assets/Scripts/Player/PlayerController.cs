@@ -43,7 +43,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float floorCheckDistance = 0.08f;
 
     [SerializeField] private AudioClip jumpSound;
-    
+    [SerializeField] private AudioClip dashSound;
+
 
     private AudioSource audioSource;    
 
@@ -174,7 +175,7 @@ public class PlayerController : MonoBehaviour
 
             if(audioSource != null && jumpSound != null)
             {
-                audioSource.PlayOneShot(jumpSound);
+                audioSource.PlayOneShot(jumpSound, 0.7f);
             }
 
             ignoreWallUntil = Time.time + wallGraceTime;
@@ -190,7 +191,7 @@ public class PlayerController : MonoBehaviour
 
             if (audioSource != null && jumpSound != null)
             {
-                audioSource.PlayOneShot(jumpSound);
+                audioSource.PlayOneShot(jumpSound, 0.7f);
             }
         }
     }
@@ -275,7 +276,11 @@ public class PlayerController : MonoBehaviour
 
         dashCooldown = 2f;
 
-       
+        if (audioSource != null && dashSound != null)
+        {
+            audioSource.PlayOneShot(dashSound, 4f);
+        }
+
     }
 
     private void UpdateDashUI()

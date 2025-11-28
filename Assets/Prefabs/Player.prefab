@@ -628,7 +628,8 @@ MonoBehaviour:
   airJumpCooldown: 0.18
   groundedBuffer: 0.06
   floorCheckDistance: 0.08
-  jumpSound: {fileID: 8300000, guid: b401605fe658b194ebd2b5837d562f1f, type: 3}
+  jumpSound: {fileID: 8300000, guid: 0f7a05649b794134188bc9f05e7c56a4, type: 3}
+  dashSound: {fileID: 8300000, guid: 5be7eceab30c8064e91bc0ef4c05803d, type: 3}
   knockbackForceX: 5
   knockbackForceY: 0.5
   knockbackLength: 0.15
@@ -674,7 +675,7 @@ MonoBehaviour:
   flashInterval: 6
   spriteToFlash: {fileID: 4389558197378103090}
   enemyLayerName: Enemy
-  hitSound: {fileID: 8300000, guid: eec68ed21b53691408a58a5bbfa05c3f, type: 3}
+  hitSound: {fileID: 8300000, guid: 0f7682de31122a3499834b5a5d054b8d, type: 3}
   gameOver: {fileID: 0}
 --- !u!114 &3426056427882134834
 MonoBehaviour:
@@ -701,7 +702,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.25
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 0
   Mute: 0

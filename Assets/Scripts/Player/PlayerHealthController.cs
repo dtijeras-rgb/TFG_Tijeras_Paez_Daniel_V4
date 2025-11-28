@@ -46,7 +46,7 @@ public class PlayerHealthController : MonoBehaviour
         }
         if (audioSource != null && hitSound != null)
         {
-            audioSource.PlayOneShot(hitSound);
+            audioSource.PlayOneShot(hitSound, 3f);
         }
         currentHealth--;
         UIController.instance.PacifierEnable(false);
