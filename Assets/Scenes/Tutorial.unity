@@ -18685,7 +18685,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1375346570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29614,6 +29614,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1184237274871753883, guid: a2b6c8fa572ae9347b0549dc200a084d, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1184237274871753883, guid: a2b6c8fa572ae9347b0549dc200a084d, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1184237274871753883, guid: a2b6c8fa572ae9347b0549dc200a084d, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1328990295886365495, guid: a2b6c8fa572ae9347b0549dc200a084d, type: 3}
       propertyPath: ambientMusic
       value: 
@@ -29626,6 +29638,22 @@ PrefabInstance:
       propertyPath: gameOverSound
       value: 
       objectReference: {fileID: 1738526140}
+    - target: {fileID: 3450263902722814890, guid: a2b6c8fa572ae9347b0549dc200a084d, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450263902722814890, guid: a2b6c8fa572ae9347b0549dc200a084d, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450263902722814890, guid: a2b6c8fa572ae9347b0549dc200a084d, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3639373359296204662, guid: a2b6c8fa572ae9347b0549dc200a084d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6533900948782899736, guid: c7b0e54abc05b564f8aa950c5638306b, type: 3}
     - target: {fileID: 8525598250341263276, guid: a2b6c8fa572ae9347b0549dc200a084d, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -29705,6 +29733,18 @@ PrefabInstance:
     - target: {fileID: 8525598250341263276, guid: a2b6c8fa572ae9347b0549dc200a084d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9103501217868825330, guid: a2b6c8fa572ae9347b0549dc200a084d, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9103501217868825330, guid: a2b6c8fa572ae9347b0549dc200a084d, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9103501217868825330, guid: a2b6c8fa572ae9347b0549dc200a084d, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
