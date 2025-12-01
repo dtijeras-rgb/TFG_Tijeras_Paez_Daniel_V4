@@ -34,7 +34,12 @@ public class GameOver : MonoBehaviour
     {
         Time.timeScale = 1f;
 
-       
+       PlayerHealthController.ResetSharedLives();
+
+        PlayerPrefs.DeleteKey("checkpointX");
+        PlayerPrefs.DeleteKey("checkpointY");
+        AppleController.ResetApples();
+        PacifierPlayerDamage.ResetPacifier();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -43,4 +48,6 @@ public class GameOver : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("MenuStart");
     }
+
+  
 }

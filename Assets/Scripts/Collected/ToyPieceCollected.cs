@@ -77,7 +77,10 @@ public class ToyPieceCollected : MonoBehaviour
     IEnumerator ChangeScene()
     {
         yield return new WaitForSeconds(delayMessage);
-       
+
+        PlayerPrefs.DeleteKey("checkpointX");
+        PlayerPrefs.DeleteKey("checkpointY");
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         
     }

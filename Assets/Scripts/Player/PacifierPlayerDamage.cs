@@ -17,9 +17,20 @@ public class PacifierPlayerDamage : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] private AudioClip shootSound;
 
+    public static bool sharedHasPacifier = false;
+
     private void Awake()
     {
         audioSource = GetComponentInParent<AudioSource>();
+    }
+
+    private void Start()
+    {
+        canShoot = sharedHasPacifier;
+
+        if (UIController.instance != null) {
+            UIController.instance.PacifierEnable(canShoot);        
+        }
     }
     void Update()
     {
@@ -58,12 +69,25 @@ public class PacifierPlayerDamage : MonoBehaviour
     public void EnableShooting()
     {
         canShoot = true;
+        PacifierPlayerDamage.sharedHasPacifier = true;
         UIController.instance.PacifierEnable(true);
     }
 
     // desactiva que podemos disparar
     public void DisableShooting() {
         canShoot = false;
-        UIController.instance.PacifierEnable(false);
+
+        sharedHasPacifier = false;
+
+        if(UIController.instance != null)
+        {
+            UIController.instance.PacifierEnable(false);
+        }
+        
+    }
+
+    public static void ResetPacifier()
+    {
+        sharedHasPacifier = false;
     }
 }

@@ -34,7 +34,16 @@ public class BabyBottleCollected : MonoBehaviour
                     playerHealth.HealPlayer(healAmount); 
                 }
             
-            
+            PacifierPlayerDamage pacifier = collision.GetComponent<PacifierPlayerDamage>();
+
+            if (pacifier == null)
+            {
+                pacifier = collision.GetComponentInChildren<PacifierPlayerDamage>();
+            }
+            if (pacifier != null)
+            {
+                pacifier.EnableShooting();
+            }
 
             GetComponent<Collider2D>().enabled = false; // Desactiva el col·lisionador per evitar més col·lisions
             // Desactiva el renderitzador de l'sprite per fer que l'objecte desaparegui visualment

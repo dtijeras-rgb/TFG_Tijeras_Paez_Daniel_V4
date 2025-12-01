@@ -25,6 +25,9 @@ public class MenuStart : MonoBehaviour
     {
         PlayerPrefs.DeleteKey("checkpointX");
         PlayerPrefs.DeleteKey("checkpointY");
+        PlayerHealthController.ResetSharedLives();
+        AppleController.ResetApples();
+        PacifierPlayerDamage.ResetPacifier();
         TransitionSceneUI.instance.DissolveExit(SceneManager.GetActiveScene().buildIndex + 1);
       
     }
