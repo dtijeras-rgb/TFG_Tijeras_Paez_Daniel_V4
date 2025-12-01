@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class UIController : MonoBehaviour
     public Sprite heartFull, heartEmpty;
 
     public Image heart1, heart2, heart3, pacifierUI;
+
+    public TextMeshProUGUI livesText;
 
     private void Awake()
     {
@@ -28,11 +31,11 @@ public class UIController : MonoBehaviour
 
     public void UpdateHealthDisplay(int currentHealth)
     {
-        currentHealth = Mathf.Clamp(currentHealth, 0, 4);
+        currentHealth = Mathf.Clamp(currentHealth, 0, 3);
 
-        heart1.enabled = currentHealth >= 2;
-        heart2.enabled = currentHealth >= 3;
-        heart3.enabled = currentHealth >= 4;
+        heart1.enabled = currentHealth >= 1;
+        heart2.enabled = currentHealth >= 2;
+        heart3.enabled = currentHealth >= 3;
     }
 
     public void PacifierEnable(bool visible)
@@ -40,5 +43,13 @@ public class UIController : MonoBehaviour
         if (pacifierUI != null) { pacifierUI.enabled = visible; }
          
     }
-    
+
+    public void UpdateLivesDisplay(int currentLives)
+    {
+        if (livesText != null)
+        {
+            livesText.text = "x " + currentLives.ToString();
+        }
+    }
+
 }

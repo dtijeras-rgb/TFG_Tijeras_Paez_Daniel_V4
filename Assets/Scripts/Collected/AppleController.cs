@@ -18,14 +18,23 @@ public class AppleController : MonoBehaviour
 
     public GameObject oneUpMessage;
 
-   
+   public static int sharedAppleCount = 0;  
     private void Awake()
     {
         
         instance = this;
+        count = sharedAppleCount;
         if(audioSource == null)
         {
             audioSource = GetComponent<AudioSource>();
+        }
+    }
+
+    private void Start()
+    {
+        if(appleCountText != null)
+        {
+            appleCountText.text = count.ToString() + " / " + maxCount.ToString();
         }
     }
 
@@ -43,6 +52,7 @@ public class AppleController : MonoBehaviour
 
             appleCountText.text = "0";
         }
+        sharedAppleCount = count;
     }
 
     private void OneUP()
@@ -56,7 +66,7 @@ public class AppleController : MonoBehaviour
         if (PlayerHealthController.instance != null)
         {
 
-            PlayerHealthController.instance.HealPlayer(healAmount);
+            PlayerHealthController.instance.AddLife(1);
 
 
         }
@@ -71,5 +81,10 @@ public class AppleController : MonoBehaviour
             yield return new WaitForSeconds(2f);
             oneUpMessage.SetActive(false);
         }
+    }
+
+    public static void ResetApples()
+    {
+        sharedAppleCount = 0;
     }
 }

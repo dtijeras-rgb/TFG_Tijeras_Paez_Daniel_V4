@@ -8,6 +8,11 @@ public class MenuPause : MonoBehaviour
     [SerializeField] private GameObject btnPause;
     [SerializeField] private GameObject menuPause;
     [SerializeField] private AudioSource ambientMusic;
+
+    [SerializeField] private GameObject menuOptions;
+    [SerializeField] private GameObject btnOptions;
+    [SerializeField] private GameObject btnReturnOptions;
+    
     private bool isPaused = false;
 
     private void Update()
@@ -76,5 +81,31 @@ public class MenuPause : MonoBehaviour
         PlayerPrefs.DeleteKey("checkpointX");
         PlayerPrefs.DeleteKey("checkpointY");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void OpenOptions()
+    {
+
+        
+        if (ambientMusic != null)
+        {
+            ambientMusic.UnPause();
+        }
+        ambientMusic.Stop();
+        btnPause.SetActive(false);
+        menuPause.SetActive(false);
+        menuOptions.SetActive(true);
+
+        SelectButton(btnReturnOptions);
+    }
+
+    private void SelectButton(GameObject button)
+    {
+
+        if (EventSystem.current == null) return;
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(button);
+
     }
 }
